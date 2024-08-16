@@ -154,6 +154,7 @@ section{
 {
     display:flex;
     justify-content:space-between;
+    gap: 10px;
     width:266px;
     height:45px;
 }
@@ -165,18 +166,20 @@ section{
     height:100%;
     background:var(--hover-color);
     color:var(--bg-color);
-    font-size:1rem;
+    font-size: 1rem;
     letter-spacing:1px;
     font-weight:600;
     transition:.6s;
     box-shadow:var(--font-neon-text-shadow);
     border-radius:5px;
-    position:relative;overflow: hidden;
+    position:relative;
+    overflow: hidden;
     z-index:1;
     border:2px solid var(--hover-color) ;
 }
 
-a.btn::hover{
+
+a.btn:hover{
     color: var(--hover-color);
 }
 a.btn::before{
@@ -190,6 +193,7 @@ a.btn::before{
     z-index: -1;
     transition: .4s;
 }
+
 a.btn:hover::before{
     width:100%;
 }
@@ -200,9 +204,11 @@ a.btn:nth-child(2){
 a.btn:nth-child(2):hover{
     color:var(--bg-color);
 }
+
 a.btn:nth-child(2)::before{
-    background: var(--hover-color); 
+    background: var(--hover-color);   
 }
+
 
 .social-icons{
     margin-top: 8rem;
@@ -211,6 +217,7 @@ a.btn:nth-child(2)::before{
     width:220px;
     height:40px;
 }
+
 .social-icons a{
     display: inline-flex;
     width: 40px;
@@ -227,6 +234,8 @@ a.btn:nth-child(2)::before{
     z-index: 1;
     overflow: hidden;
 }
+
+
 
 .social-icons a i{
     font-size: 1.5rem;
@@ -394,10 +403,164 @@ a.btn:nth-child(2)::before{
     transition: transform .4s;
     border-radius: 10px;
 }
- /*.services-btn{
+ .services-btn{
     width: auto;
     justify-content: center;
- } */
+}
+
+.service-box:hover{
+    transform: translateY(-.7rem)
+}
+
+.service-icon{
+    border: 2px var(--hover-color);
+    padding: 2rem;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    border-radius: 50%;
+    position: relative;
+    color: var(--hover-color);
+    box-shadow: var(--neon-box-shadow);
+    outline: 3px solid var(--bg-color);
+}
+
+.service-box h3{
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+.service-box p{
+    margin: .5rem 0.1rem 0;
+    font-size: 300;
+    letter-spacing: 1px;
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+/* services section css ------------------*/
+    .skills{
+        background: var(--secon-bg-color);
+    }
+   
+   .skill-main{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-row-gap: 30px;
+    grid-column-gap: 50px;
+   }
+
+ .skill-bar{
+    margin-bottom: 2.3rem;
+ }
+
+.skill-main h3{
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.skill-left .skill-bar .info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.skill-left .skill-bar .bar{
+    width: 100%;
+    height: 10px;
+    background-color: var(--bg-color);
+    border-radius: 25px;
+    margin-top: 10px; 
+    position: relative;
+}
+
+.skill-bar .bar span{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background: var(--hover-color);
+    border-radius: 25px;
+    box-shadow: var(--neon-box-shadow);
+}
+
+.skill-bar .bar .html{
+    width: 82%;
+    animation: html 5s;
+}
+
+.skill-bar .bar .figma{
+    width: 50%;
+    animation: figma  5s;
+}
+
+.skill-bar .bar .javascript{
+    width: 62%;
+    animation: javascript 5s;
+}
+
+.skill-bar .bar .css{
+    width: 72%;
+    animation: css 5s;
+}
+
+
+/* skill right */ 
+.professional{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: absolute;
+    margin: 50px 100px 0 0;
+}
+
+.box{
+ margin: 10px 0;  
+ flex: 1 1 15rem;
+}
+
+.box .text{
+ text-align: center;
+ color: #fff;
+ font-size: 1rem;
+}
+
+.box .text big{
+font: 400;
+letter-spacing: 1px;
+position: absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50% , -50%);
+}
+
+
+
+.circle{
+width: 100%;
+height: 120px;
+display: flex;
+justify-content: center;
+align-items: center;
+border: 2px solid #ffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -425,3 +588,38 @@ a.btn:nth-child(2)::before{
    }
 }
 
+@keyframes html{
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 82%;
+    }
+}
+
+@keyframes figma{
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 50%;
+    }
+}
+
+@keyframes javascript{
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 62%;
+    }
+}
+
+@keyframes css{
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 72%;
+    }
+}
