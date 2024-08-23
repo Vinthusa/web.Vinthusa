@@ -37,4 +37,74 @@ let changeText = ()=>{
 };
 
 changeText();
-setInterval(changeText,3000);
+setInterval(changeText,3000)
+
+
+// circle skill /////////////////////////////////
+
+
+const circles = document.querySelectorAll('.circle');
+circles.forEach(elem => {
+    var dots = parseInt(elem.getAttribute("data-dots")); 
+    var marked = parseInt(elem.getAttribute("data-present")); 
+    var percent = Math.floor((dots * marked) / 100); 
+    var points = "";
+    var rotate = 360 / dots; 
+
+    for (let i = 0; i < dots; i++) {
+        points += `<div class="points" style="--i:${i}; --rot:${rotate}; background-color: ${i < percent ? 'var(--bg-color)' : 'var(--bg-color)'};"></div>`;
+    }
+    elem.innerHTML = points;
+
+    const pointsMarked = elem.querySelectorAll('.points');
+    for(let i = 0; i<percent ; i++){
+        pointsMarked[i].classList.add('marked')
+    }
+});
+
+
+// mix it up portfolio section 
+var mixer = mixitup('.portfolio-gallery');
+
+
+
+//creative menu/////////////////////////////////
+let menuli = document.querySelectorAll('header ul li a');
+let section = document.querySelectorAll('section');
+
+function activeMenu() {
+   let len = section.length;
+   while(--len && window.scrollY + 97 < section[len].offsetTop) {}
+   menuli.forEach(sec => sec.classList.remove("active"));
+   menuli[len].classList.add("active");
+}
+
+activeMenu();
+window.addEventListener("scroll", activeMenu);
+
+
+// Sticky navbar/////////////////////////////////////
+const header = document.querySelector("header");
+window.addEventListener("scroll", function() {
+   header.classList.toggle("sticky", window.scrollY > 50);
+});
+
+
+// Sticky navbar///////////////////////////////////////
+let menuIcon = document.querySelector(".Menu-icon"); 
+let navlist = document.querySelector(".navlist");
+
+menuIcon.onclick = () => {
+    menuIcon.classList.toggle("bx-x");
+    navlist.classList.toggle("open");
+}
+
+window.onscroll = () => {
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
+
+window.onclick = () => {
+    menuIcon.classList.remove("bx-x");
+    navlist.classList.remove("open");
+}
