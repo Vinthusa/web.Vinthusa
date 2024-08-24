@@ -45,9 +45,9 @@
 
 
 body{
-    font-family:"poppins",sans-serif;
+    font-family:"poppins" , sans-serif;
     background-color: var(--bg-color);
-    color:var(--text-color);
+    color: var(--text-color);
 }
 header{
     position: fixed;
@@ -55,39 +55,41 @@ header{
     left: 0;
     z-index: 1000;
     border-bottom: 1px solid transparent;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    width:100%;
-    padding:20px 10%;
-    box-sizing: border-box;
-    background-color:Var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 10%;
 }
 
 header.sticky{
     background: var(--bg-color);
     border-bottom: 1px solid var(--secon-bg-color);
-    padding: 12px 10%;
-    
+    padding: 12px 10%;  
 }
 
 .logo
 {
-    font-size:26px;
-    font-weight:700;
-    letter-spacing:1px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
+
 span{
-    color:var(--hover-color);
+    color: var(--hover-color);
 }
+
 .navlist{
     display:flex;
 }
-
-.navlist a{
-    color:var(--text-color);
-    font-weight:500;
-    padding:10px 20px;
+.navlist a {
+    display: inline-block;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 10px 20px;
+    animation: slideAnimation 1s ease forwards;
+    animation-delay: calc(.3s * var(--i));
+    opacity: 0;
 }
 
 .navlist a:hover{
@@ -102,8 +104,19 @@ span{
     0 0 150px rgba(18,247,255,0.6);
 }
 
-.navlist a .active{
+.navlist a.active{
     color: var(--hover-color);
+}
+
+#menu-icon{
+    font-size: 1.8rem;
+    z-index: 10001;
+    cursor: pointer;
+    margin-left: 25px;
+    background: var(--hover-color);
+    border-radius: 3px;
+    color: var(--secon-bg-color-color);
+    display: none;
 }
 
 section{
@@ -217,7 +230,7 @@ section{
     border-radius:5px;
     position:relative;
     overflow: hidden;
-    z-index:1;
+    z-index:10000;
     border:2px solid var(--hover-color) ;
 }
 
@@ -447,7 +460,7 @@ section{
     border-radius: 10px;
 
 }
- .services-btn{
+ .service-btn{
     width: auto;
     justify-content: center;
 }
@@ -457,13 +470,14 @@ section{
 }
 
 .service-icon{
-    border: 2px var(--hover-color);
+    border: 2px solid var(--hover-color);
     padding: 2rem;
     background: var(--bg-color);
     display: flex;
     align-items: center;
     font-size: 3rem;
     border-radius: 50%;
+    justify-content: center; 
     position: relative;
     color: var(--hover-color);
     box-shadow: var(--neon-box-shadow);
@@ -618,7 +632,7 @@ align-items:center;
     text-align: center;
  }
  
- .filter-buttons .btn {
+ .filter-buttons .button {
      background: none;
      outline: none;
      border: none;
@@ -630,7 +644,7 @@ align-items:center;
      color: var(--text-color);
  }
  
- .filter-buttons .btn:hover {
+ .filter-buttons .button:hover {
      color: var(--hover-color);
  }
  
@@ -794,9 +808,28 @@ footer a i{
     color: var(--secon-color);
 }
 
+/* parallax --------------------------*/
+.scroll-scale{
+    opacity: 0;
+    transform: scale(.9);
+    transition: all 2s;
+}
+.scroll-button{
+    opacity: 0;
+    transform: translateY(300px);
+    transition: 3s;
+}
 
+.scroll-top{
+    opacity: 0;
+    transform: translateY(-300px);
+    transition: 3s;
+}
 
-
+.show-items{
+    opacity: 1;
+    transform: translateX(0);
+}
 
 
 
@@ -868,12 +901,26 @@ footer a i{
         box-shadow: var(--neon-box-shadow);
     }
 }
+ 
+@keyframes slideAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
 
 
 /* Break Points */
 @media(max-width:991px){
     header,
-    header.stiky{
+    header.sticky{
         padding: 15px 5%;
     }
     footer{
@@ -885,6 +932,8 @@ footer a i{
 .navlist a{
     padding: 8px 5px;
 }
+} 
+  
 :root{
 --big-font:2.2rem;
 --normal-font:1.8rem;
@@ -897,7 +946,7 @@ footer a i{
      .social-icons{
         margin-top: 2rem;
      }
-}
+    
 
 @media(max-width:768px){
     #menu-icon{
@@ -938,10 +987,39 @@ footer a i{
     .liquid-shape{
         width: 80%;
         left: 10%;
-        top: 1%;
+        top: 13%;
     }
     .about{
         flex-direction: column-reverse;
-        
+    }
+    .skill-main{
+        grid-template-columns: 1fr;
+    }
+    .filter-buttons{
+        margin: 2.5rem 0;
+    }
+    footer p{
+        font-size: .5rem;
+    }
+}
+
+@media(max-width:420px){
+    html{
+        font-size: 80%;
+    }
+    footer p{
+        font-size: .6rem;
+    }
+    .filter-buttons .button{
+        font-size: .8rem;
+    }
+    .img-about img{
+        width: 300px;
+    }
+    .info-about1,.info-about2,.info-about3{
+        display: none;
+    }
+    .img-about p{
+        font-size: 1rem;
     }
 }

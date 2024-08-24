@@ -83,15 +83,20 @@ activeMenu();
 window.addEventListener("scroll", activeMenu);
 
 
-// Sticky navbar/////////////////////////////////////
+// Sticky navbar
 const header = document.querySelector("header");
+
 window.addEventListener("scroll", function() {
-   header.classList.toggle("sticky", window.scrollY > 50);
+   if (window.scrollY > 50) {
+       header.classList.add("sticky");
+   } else {
+       header.classList.remove("sticky");
+   }
 });
 
 
 // Sticky navbar///////////////////////////////////////
-let menuIcon = document.querySelector(".Menu-icon"); 
+let menuIcon = document.querySelector("#menu-icon"); 
 let navlist = document.querySelector(".navlist");
 
 menuIcon.onclick = () => {
@@ -99,12 +104,37 @@ menuIcon.onclick = () => {
     navlist.classList.toggle("open");
 }
 
+window.onclick = (event) => {
+    if (!navlist.contains(event.target) && !menuIcon.contains(event.target)) {
+        menuIcon.classList.remove("bx-x");
+        navlist.classList.remove("open");
+    }
+}
+
+// Close the navbar when scrolling
 window.onscroll = () => {
     menuIcon.classList.remove("bx-x");
     navlist.classList.remove("open");
 }
 
-window.onclick = () => {
-    menuIcon.classList.remove("bx-x");
-    navlist.classList.remove("open");
-}
+// Parallax IntersectionObserver
+const abserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {  
+        entry.target.classList.add("show-items");
+      } else {
+        entry.target.classList.remove("show-items");
+      }
+    });
+  });
+  
+  // Select elements and observe them
+  const scrollScale = document.querySelectorAll(".scroll-scale");
+  scrollScale.forEach((el) => abserver.observe(el));  
+  
+  const scrollButton = document.querySelectorAll(".scroll-button");
+  scrollButton.forEach((el) => abserver.observe(el)); 
+  
+  const scrollTop = document.querySelectorAll(".scroll-top");
+  scrollTop.forEach((el) => abserver.observe(el));  
+  
